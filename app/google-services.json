@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "303637813856",
+    "firebase_url": "https://startagrocol.firebaseio.com",
+    "project_id": "startagrocol",
+    "storage_bucket": "startagrocol.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303637813856:android:faa21cb7e7f4a5c5",
+        "android_client_info": {
+          "package_name": "co.potes.icesi.startagrocol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303637813856-f53q23q5go9cl7g9kmihj2a52olbol0t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.potes.icesi.startagrocol",
+            "certificate_hash": "e5028348c13d93650c3fcbe241f05527506a2656"
+          }
+        },
+        {
+          "client_id": "303637813856-4jkmqno7jov40tb0s1f96u8trv9e52jr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJp4wbXUUz-zZ6uUf1LJtIkAoxwnkW9bA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303637813856-4jkmqno7jov40tb0s1f96u8trv9e52jr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
