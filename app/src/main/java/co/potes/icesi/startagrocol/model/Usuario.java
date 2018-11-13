@@ -2,17 +2,23 @@ package co.potes.icesi.startagrocol.model;
 
 public class Usuario {
 
+
+
+    public static  final String EMPRENDEDOR = "emprendedor";
+    public  static final String INVERSOR = "inversor";
+
     private String uid;
     private String nombre;
     private String email;
-    private String edad;
+    private String telefono;
     private String contrasenia;
+    private String tipo;
 
-    public Usuario(String uid, String nombre, String email, String edad,String contrasenia) {
+    public Usuario(String uid, String nombre, String email, String telefono,String contrasenia) {
         this.uid = uid;
         this.nombre = nombre;
         this.email = email;
-        this.edad = edad;
+        this.telefono = telefono;
         this.contrasenia = contrasenia;
     }
 
@@ -44,11 +50,27 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getEdad() {
-        return edad;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setEdad(String edad) {
-        this.edad = edad;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+
+    public String isTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }

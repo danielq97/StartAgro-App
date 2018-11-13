@@ -1,11 +1,18 @@
 package co.potes.icesi.startagrocol;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,21 +24,25 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import co.potes.icesi.startagrocol.model.Usuario;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity  {
 
 
     FirebaseDatabase db;
     FirebaseAuth auth;
 
-    private EditText et_user;
-    private EditText et_age;
-    private EditText et_mail;
-    private EditText et_pass;
-    private Button btn_reg;
+   private EditText [] txt;
+   private EditText [] labels;
+   private RadioGroup [] groups;
+   private RadioButton inversor;
+   private RadioButton emprendedor;
+   private Button btnRegistrarse;
+   private ImageView imageView;
+   private ImageButton imageButton;
+   private CheckBox terminos;
 
 
 
-
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,65 +52,158 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         db = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
 
-
-     //   et_user = findViewById(R.id.et_user);
-      //  et_age = findViewById(R.id.et_edad);
-      //  et_mail = findViewById(R.id.et_mail);
-        et_pass = findViewById(R.id.et_pass);
-       // btn_reg = findViewById(R.id.btn_reg);
-        btn_reg.setOnClickListener(this);
-
-
-        DatabaseReference reference = db.getReference().child("estudiantes");
-        reference.setValue("Victor");
+        txt = new EditText[5];
 
 
 
 
+        txt[0] = findViewById(R.id.txtNombreRegistro);
+        txt[1] = findViewById(R.id.txtCorreoRegistro);
+        txt[2] = findViewById(R.id.txtTelefonoRegistro);
+        txt[3] = findViewById(R.id.txtcontraseña1Registro);
+        txt[4] = findViewById(R.id.txtcontraseña2Registro);
+
+        btnRegistrarse = findViewById(R.id.btnRegistrarse);
+
+        inversor = findViewById(R.id.radioButtonInversor);
+        emprendedor = findViewById(R.id.radioButtonEmprendedor);
+
+        terminos = findViewById(R.id.checkboxTerminos);
+
+        imageView = findViewById(R.id.imagePerfil);
+        imageButton = findViewById(R.id.btnCargarFoto);
 
 
-    }
-
-    @Override
-    public void onClick(View v) {
-        if(v.equals(btn_reg)){
-            String nombre = et_user.getText().toString();
-            String email = et_mail.getText().toString();
-            String edad = et_age.getText().toString();
-
-          //  Usuario usuario = new Usuario("", nombre, email,edad);
-
-            //registrarUsuario(usuario);
-
-        }
-    }
-
-    private void registrarUsuario(final Usuario usuario) {
-        String password = et_pass.getText().toString();
-        if(password.length()<=5){
-            Toast.makeText(this,"La contraseña debe ser mayor o igual a 6", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        auth.createUserWithEmailAndPassword(usuario.getEmail(), password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        btnRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(MainActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
-                    usuario.setUid(auth.getCurrentUser().getUid());
-                    DatabaseReference reference = db.getReference()
-                            .child("usuarios").child(usuario.getUid());
-                    reference.setValue(usuario);
+            public void onClick(View v) {
 
-                    //Aquí me voy para el perfil
+
+
+                String nombre = txt[0].getText().toString();
+                String correo = txt[1].getText().toString();
+                String telefono = txt[2].getText().toString();
+                String contraseña1 = txt[3].getText().toString();
+                String contraseña2 = txt [4].getText().toString();
+                String tipo = "";
+                boolean bandera = true;
+
+                if (nombre.equals("")) {
+
+                    Toast.makeText(MainActivity.this, "Introduzca un nombre de usuario valido", Toast.LENGTH_SHORT).show();
+                    bandera = false;
 
                 }
-                else{
-                    Toast.makeText(MainActivity.this, "Registro fallido", Toast.LENGTH_SHORT).show();
+
+                if (correo.contains("@")== false){
+
+                    Toast.makeText(MainActivity.this, "Introduzca un correo valido", Toast.LENGTH_SHORT).show();
+                    bandera = false;
+                }
+
+
+                if ((!contraseña1.equals(contraseña2))  ){
+
+
+                    Toast.makeText(MainActivity.this, "Las contraseñas son diferentes", Toast.LENGTH_SHORT).show();
+                    bandera = false;
+                }else if ( contraseña1.equals("")){
+                    Toast.makeText(MainActivity.this, "por favor introduce una contraseña", Toast.LENGTH_SHORT).show();
+                    bandera = false;
+                }
+
+                if (!terminos.isChecked()){
+
+                    Toast.makeText(MainActivity.this, "Acepte los terminos y condicones para registrarse", Toast.LENGTH_SHORT).show();
+                    bandera = false;
+                }
+
+                if (!emprendedor.isChecked()&& !inversor.isChecked()){
+
+                    Toast.makeText(MainActivity.this, "Debes de elegir tu tipo de rol", Toast.LENGTH_SHORT).show();
+                    bandera = false;
+                }else if(emprendedor.isChecked()){
+                    tipo = Usuario.EMPRENDEDOR;
+                }else if (inversor.isChecked()){
+                    tipo = Usuario.INVERSOR;
+                }
+
+
+                try {
+
+
+                    int numero = Integer.parseInt(telefono.trim());
+
+                }catch (Exception e){
+
+                    e.printStackTrace();
+
+
+                   // Toast.makeText(MainActivity.this, "Introduzca un numero de telefono valido", Toast.LENGTH_SHORT).show();
+                   // bandera = false;
+                    Log.e("numero fallando", telefono+ " " + telefono.length());
 
                 }
+
+
+                if (bandera){
+
+
+                    if(Usuario.INVERSOR.equals(tipo)){
+
+                       DatabaseReference reference = db.getReference().child("UsuarioInversor");
+
+                       Usuario nuevo = new Usuario();
+
+                       nuevo.setNombre(nombre);
+                       nuevo.setEmail(correo);
+                       nuevo.setTelefono(telefono);
+                       nuevo.setContrasenia(contraseña1);
+                       nuevo.setTipo(Usuario.INVERSOR);
+                       reference.push().setValue(nuevo);
+                        Toast.makeText(MainActivity.this,"todo correcto",Toast.LENGTH_SHORT).show();
+
+
+                    }else if (tipo.equals(Usuario.EMPRENDEDOR)){
+
+
+                        DatabaseReference reference = db.getReference().child("UsuarioEmprendedor");
+
+                        Usuario nuevo = new Usuario();
+
+                        nuevo.setNombre(nombre);
+                        nuevo.setEmail(correo);
+                        nuevo.setTelefono(telefono);
+                        nuevo.setContrasenia(contraseña1);
+                        nuevo.setTipo(Usuario.EMPRENDEDOR);
+                        reference.push().setValue(nuevo);
+                        Toast.makeText(MainActivity.this,"todo correcto",Toast.LENGTH_SHORT).show();
+
+                    }
+
+
+
+
+                }
+
+
+
+
+
+
+
+
+
+
             }
         });
 
+
+
+
+
+
     }
+
+
 }
