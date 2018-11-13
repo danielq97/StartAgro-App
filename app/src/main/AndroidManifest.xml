@@ -14,15 +14,15 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".Login" />
         <activity android:name=".Splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".RestaurarContrasenia" />
         <activity android:name=".Proyectos" />
-        <activity android:name=".MisProyectos"></activity>
+        <activity android:name=".MisProyectos"><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
     </application>
 
 </manifest>
