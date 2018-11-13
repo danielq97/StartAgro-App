@@ -19,9 +19,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".RestaurarContrasenia" />
-        <activity android:name=".Proyectos"></activity>
+        <activity android:name=".Proyectos" />
+        <activity android:name=".MisProyectos"></activity>
     </application>
 
 </manifest>

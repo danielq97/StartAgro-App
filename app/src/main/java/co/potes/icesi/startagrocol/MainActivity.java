@@ -42,11 +42,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         auth = FirebaseAuth.getInstance();
 
 
-        et_user = findViewById(R.id.et_user);
-        et_age = findViewById(R.id.et_edad);
-        et_mail = findViewById(R.id.et_mail);
+     //   et_user = findViewById(R.id.et_user);
+      //  et_age = findViewById(R.id.et_edad);
+      //  et_mail = findViewById(R.id.et_mail);
         et_pass = findViewById(R.id.et_pass);
-        btn_reg = findViewById(R.id.btn_reg);
+       // btn_reg = findViewById(R.id.btn_reg);
         btn_reg.setOnClickListener(this);
 
 
@@ -67,9 +67,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String email = et_mail.getText().toString();
             String edad = et_age.getText().toString();
 
-            Usuario usuario = new Usuario("", nombre, email,edad);
+          //  Usuario usuario = new Usuario("", nombre, email,edad);
 
-            registrarUsuario(usuario);
+            //registrarUsuario(usuario);
 
         }
     }
