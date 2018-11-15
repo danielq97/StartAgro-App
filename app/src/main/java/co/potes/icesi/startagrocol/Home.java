@@ -28,7 +28,7 @@ public class Home extends AppCompatActivity {
     private EditText txtBusqueda;
     private ListView lista;
     private AdaptadorListaHome adaptadorListas;
-    private ArrayList<Proyecto> listPlaylist;
+    private ArrayList<Proyecto> proyectos;
     private FirebaseDatabase db;
 
     @Override
@@ -37,6 +37,13 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         String applicationID = "301664";
+
+        btnBusqueda = findViewById(R.id.btnBusqueda);
+        txtBusqueda = findViewById(R.id.txtBusqueda);
+        lista = findViewById(R.id.lista);
+        adaptadorListas = new AdaptadorListaHome(this);
+        lista.setAdapter(adaptadorListas);
+        proyectos = new ArrayList<Proyecto>();
 
         db = FirebaseDatabase.getInstance();
 
@@ -56,6 +63,12 @@ public class Home extends AppCompatActivity {
                     Proyecto proyecto = new Proyecto();
 
                     proyecto.setDescripcion(descripcion);
+                    proyecto.setTitulo(titulo);
+                    proyecto.setUrl(url);
+
+
+                    adaptadorListas.agregarLista(proyecto);
+
 
 
 
@@ -75,12 +88,7 @@ public class Home extends AppCompatActivity {
 
 
 
-        btnBusqueda = findViewById(R.id.btnBusqueda);
-        txtBusqueda = findViewById(R.id.txtBusqueda);
-        lista = findViewById(R.id.lista);
-        adaptadorListas = new AdaptadorListaHome(this);
-        lista.setAdapter(adaptadorListas);
-        listPlaylist = new ArrayList<Proyecto>();
+
 
 
 
