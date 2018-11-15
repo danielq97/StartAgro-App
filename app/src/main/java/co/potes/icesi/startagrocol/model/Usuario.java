@@ -4,8 +4,8 @@ public class Usuario {
 
 
 
-    public static  final String EMPRENDEDOR = "emprendedor";
-    public  static final String INVERSOR = "inversor";
+    public static  final String EMPRENDEDOR = "UsuarioEmprendedor";
+    public  static final String INVERSOR = "UsuarioInversor";
 
     private String uid;
     private String nombre;
@@ -13,6 +13,7 @@ public class Usuario {
     private String telefono;
     private String contrasenia;
     private String tipo;
+
 
     public Usuario(String uid, String nombre, String email, String telefono,String contrasenia) {
         this.uid = uid;
@@ -66,7 +67,7 @@ public class Usuario {
         this.contrasenia = contrasenia;
     }
 
-    public String isTipo() {
+    public String getTipo() {
         return tipo;
     }
 
