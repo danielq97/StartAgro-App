@@ -193,6 +193,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void registrarUsuario(final Usuario usuario) {
 
+
+
         auth.createUserWithEmailAndPassword(usuario.getEmail(), usuario.getContrasenia()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

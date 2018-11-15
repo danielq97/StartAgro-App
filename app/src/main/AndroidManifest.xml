@@ -22,8 +22,9 @@
         </activity>
         <activity android:name=".RestaurarContrasenia" />
         <activity android:name=".Proyectos" />
-        <activity android:name=".MisProyectos"></activity>
-        <activity android:name=".Home"></activity>
+        <activity android:name=".MisProyectos" />
+        <activity android:name=".Home" />
+        <activity android:name=".Publicar"></activity>
     </application>
 
 </manifest>
