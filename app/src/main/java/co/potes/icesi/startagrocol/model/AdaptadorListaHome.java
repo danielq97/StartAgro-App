@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.*;
+
 import com.squareup.picasso.Picasso;
 
 import java.net.MalformedURLException;
