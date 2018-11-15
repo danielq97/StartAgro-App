@@ -34,14 +34,15 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
 
         String applicationID = "301664";
 
         btnBusqueda = findViewById(R.id.btnBusqueda);
         txtBusqueda = findViewById(R.id.txtBusqueda);
-        lista = findViewById(R.id.lista);
+
         adaptadorListas = new AdaptadorListaHome(this);
+        lista = findViewById(R.id.lista);
         lista.setAdapter(adaptadorListas);
         proyectos = new ArrayList<Proyecto>();
 

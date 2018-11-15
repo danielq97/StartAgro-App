@@ -32,7 +32,7 @@ public class Publicar extends AppCompatActivity {
         et_descripcion = findViewById(R.id.et_descripcion);
 
 
-        S
+
 
 
         DatabaseReference reference = db.getReference();
