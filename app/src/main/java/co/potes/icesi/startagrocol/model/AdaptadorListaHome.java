@@ -9,11 +9,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.*;
+
 import com.squareup.picasso.Picasso;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+
 import java.util.ArrayList;
 
 import co.potes.icesi.startagrocol.R;
@@ -47,14 +46,14 @@ public class AdaptadorListaHome extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(activity);
         View renglon = inflater.inflate(R.layout.xmlisthome, null, false);
-        TextView txtNombre = renglon.findViewById(R.id.lista);
-        TextView txtUsuario = renglon.findViewById(R.id.usuario);
-        TextView txtNumero = renglon.findViewById(R.id.numCanciones);
+        TextView txtTiulto = renglon.findViewById(R.id.lista);
+        TextView txtDescripcion = renglon.findViewById(R.id.usuario);
+
 
         ImageView image = renglon.findViewById(R.id.iv_foto);
 
-        txtNombre.setText( proyectos.get(position).getTitulo());
-        txtUsuario.setText(proyectos.get(position).getDescripcion());
+        txtTiulto.setText( proyectos.get(position).getTitulo());
+        txtDescripcion.setText(proyectos.get(position).getDescripcion());
 
 
 
